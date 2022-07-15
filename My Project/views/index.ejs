@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css" type="text/css">
+    <link rel="stylesheet" href="/assets/light.css">
+</head>
+
+<body>
+    <div class="bg-img">
+        <img src="/assets/bg-desktop-dark.jpg" alt="img">
+    </div>
+    <div class="container">
+        <div class="header">
+            <div class="title">
+                TODO
+            </div>
+            <div class="theme">
+                <!-- <img src="/assets/icon-sun.svg" alt="img"> -->
+            </div>
+        </div>
+        <div class="new-todo">
+            <div class="new-todo-input">
+                <form action="/todo" method="post">
+                    <input id="todo-input" type="text" name="task" id="text" placeholder="Create a new todo...">
+                </form>
+            </div>
+        </div>
+        <div class="todo-items-wrapper">
+            <div class="todo-items">
+                <% todo.forEach(todos=> { %>
+                    <div class="todo-item">
+                        <div class="check">
+                            <a href="/todo/update/<%= todos._id %>">
+                                <% if(todos.Mark){ %>
+                                    <div class="marked check-mark">
+                                        <img src="assets/icon-check.svg" alt="img">
+                                    </div>
+                                    <% } else{ %>
+                                        <div class="check-mark">
+                                            <!-- <img src="assets/icon-check.svg" alt="img"> -->
+                                        </div>
+                                        <% } %>
+                            </a>
+                        </div>
+                        <div class="todo-text">
+                            <%= todos.task %>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+            <div class="todo-items-info">
+                <!-- <div class="items-left">
+                    <span id="count">0</span> Items left
+                </div> -->
+                <div class="items-statuses">
+                    <span class="active">All</span>
+                    <span id="remains"><a href="todo/active">Active</a></span>
+                    <span id="complete"><a href="todo/completed">Completed</a></span>
+                </div>
+                <div class="items-clear">
+                    <span id="cComlete"><a href="todo/delete">Clear Completed</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
